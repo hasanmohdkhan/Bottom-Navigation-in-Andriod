@@ -6,7 +6,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.hasanzian.bottomnavigation.MainActivity">
+    <!-- FrameLayout to load the Fragments when the navigation item is selected  -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
 
-    
+    />
+
+    <android.support.design.widget.BottomNavigationView
+
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?android:attr/windowBackground"
+        app:itemBackground="@color/bgBottomNavigation"
+        android:foreground="?attr/selectableItemBackground"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
+
+
+
+        />
 
 </android.support.design.widget.CoordinatorLayout>
