@@ -89,9 +89,12 @@ public class MainActivity extends AppCompatActivity {
      // Load Fragment
         // Fragment Transition for 1 activity to another
         FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
-        // Setting fragment into frame_container
+        // Setting fragment into frame_container(@link FrameLayout) into main_activity.xml
         transaction.replace(R.id.frame_container,fragment);
 
+        // By calling addToBackStack(), the replace transaction is saved to
+        // the back stack so the user can reverse the transaction and bring
+        // back the previous fragment by pressing the Back button.
         transaction.addToBackStack(null);
         // commit loading fragment
         transaction.commit();
