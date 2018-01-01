@@ -9,6 +9,7 @@
 
     <!-- FrameLayout to load the Fragments when the navigation item is selected  -->
     <FrameLayout
+        android:id="@+id/frame_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"

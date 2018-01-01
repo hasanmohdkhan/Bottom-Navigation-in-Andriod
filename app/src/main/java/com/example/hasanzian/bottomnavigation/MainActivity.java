@@ -1,12 +1,16 @@
 package com.example.hasanzian.bottomnavigation;
 
-import android.app.Fragment;
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,32 +28,46 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         toolbar.setTitle("Shop");
-
+        // method for loading Fragment in frameLayout
+        loadFragment(new StoreFragment());
+ 
 
 
     }
+
+
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment fragment;
+                    android.support.v4.app.Fragment fragment;
                     switch (item.getItemId()){
 
                         case R.id.navigation_shop:
                             toolbar.setTitle("Shop");
+                            fragment = new StoreFragment();
+                            loadFragment(fragment);
+
                             return true;
 
                         case R.id.navigation_gift:
-                            toolbar.setTitle("Gifts");
+                            toolbar.setTitle("My Gifts");
+                            fragment = new GiftFragment();
+                            loadFragment(fragment);
                             return true;
 
                         case R.id.navigation_cart:
                             toolbar.setTitle("Cart");
+                            fragment = new CartFragment();
+                            loadFragment(fragment);
                             return true;
 
                         case R.id.navigation_profile:
                             toolbar.setTitle("Profile");
+                            fragment = new ProfileFragment();
+                            loadFragment(fragment);
                             return true;
 
                     }
@@ -66,6 +84,20 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    private void loadFragment(Fragment fragment)
+    {
+     // Load Fragment
+        // Fragment Transition for 1 activity to another
+        FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
+        // Setting fragment into frame_container
+        transaction.replace(R.id.frame_container,fragment);
 
+        transaction.addToBackStack(null);
+        // commit loading fragment
+        transaction.commit();
+
+
+
+    }
 
 }
